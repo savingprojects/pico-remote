@@ -1,0 +1,264 @@
+<script type="text/javascript" src="bower_components/diya-sdk-ng/dist/diya-sdk.js"></script>
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-icons/core-icons.html">
+
+<link rel="import" href="../diya-chooser/diya-chooser-dialog.html">
+
+<polymer-element name="pico-commande" attributes="selector">
+	<template>
+		<style>
+			:host{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				flex-wrap: wrap;
+				box-shadow: 0px 0px 10px #555;
+				border-radius: 10px;
+				}
+
+			#power paper-button{
+				color: #3680F9;
+				}
+
+			#power paper-button::shadow #ripple{
+				color: blue;
+				}
+
+			#bloc1{
+				display: flex;
+				flex-direction: raw;
+				justify-content: space-between;
+				width: 100%;
+				flex: 1;
+
+				}
+
+			#bloc2{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: space-between;
+				width:  100%;
+				background: url('res/circle.svg') no-repeat center center;
+				background-size: 90% 90%;
+				flex: 3;
+				}
+
+			#bloc2 paper-button{
+				background: white;
+				}
+
+			#bloc2_1{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				}
+
+			#bloc2_2{
+				display: flex;
+				flex-direction: raw;
+				justify-content: space-between;
+				align-items: center;
+				}
+
+			#bloc2_3{
+				display: flex;
+				flex-direction: raw;
+				justify-content: center;
+				align-items: center;
+				}
+
+
+
+
+			#bloc3{
+				border-color: #3680F9;
+				display: flex;
+				width:  100%;
+				flex-direction: column;
+				justify-content: center;
+				align-items: space-between;
+				flex: 2;
+				}
+
+
+			#bloc3_1{
+				display: flex;
+				flex-direction: raw;
+				justify-content: space-between;
+				}
+
+			#bloc3_2{
+
+				display: flex;
+				flex-direction: raw;
+				justify-content: space-between;
+				align-items: center;
+				}
+
+			#bloc3_3{
+
+				display: flex;
+				flex-direction: raw;
+				justify-content: space-between;
+				align-items: center;
+				}
+
+		</style>
+		<diya-chooser-dialog selector="{{selector}}"></diya-chooser-dialog>
+
+		<div id="bloc1">
+			<div id="Power">
+				<paper-button toggle raised noink on-tap="{{power}}"><core-icon icon="settings-power" ></core-icon> </paper-button>
+			</div>
+			<div id="Zoom">
+				<paper-button raised on-tap="{{zoom}}"> zoom</paper-button>
+			</div>
+			<div id="Back">
+				<paper-button raised on-tap="{{back}}"><core-icon icon="exit-to-app" ><core-icon></paper-button>
+			</div>
+		</div>
+
+		<div id="bloc2">
+			<div id="bloc2_1">
+				<paper-button raised on-tap="{{up}}"><core-icon icon="expand-less" ></core-icon> </paper-button>
+			</div>
+			<div id="bloc2_2">
+				<div id="left">
+					<paper-button  on-tap="{{left}}"raised><core-icon icon="chevron-left"></core-icon> </paper-button>
+				</div>
+				<div id="ok">
+					<paper-button raised on-tap="{{ok}}">ok</paper-button>
+				</div>
+				<div id="right">
+					<paper-button  on-tap="{{right}}"raised><core-icon icon="chevron-right"></core-icon> </paper-button>
+				</div>
+			</div>
+			<div id="bloc2_3">
+				<paper-button raised on-tap="{{down}}"><core-icon icon="expand-more" ></core-icon> </paper-button>
+			</div>
+
+		</div>
+
+		<div id="bloc3">
+			<div id="bloc3_1">
+				<div id="lumiDown">
+					<paper-button raised on-tap="{{lumiDown}}">lumi-</paper-button>
+				</div>
+				<div id="lumiUp">
+					<paper-button raised on-tap="{{lumiUp}}">lumi+</paper-button>
+				</div>
+			</div>
+
+			<div id="bloc3_2">
+				<paper-button raised on-tap="{{prev}}"> << </paper-button>
+				<paper-button raised on-tap="{{play}}"><core-icon icon="send"></core-icon></paper-button>
+				<paper-button raised on-tap="{{next}}"> >> </paper-button>
+			</div>
+
+			<div id="bloc3_3">
+					<div id="volumeDown">
+						<paper-button raised on-tap="{{volumeDown}}">volume-</paper-button>
+					</div>
+					<div id="mute">
+						<paper-button toggle raised noink role="button" on-tap="{{mute}}">mute</paper-button>
+					</div>
+					<div id="volumeUp">
+						<paper-button raised on-tap="{{volumeUp}}">volume+</paper-button>
+					</div>
+			</div>
+		</div>
+
+	</template>
+	<script>
+
+
+		Polymer({
+			ready: function(){
+				var that = this;
+				this.pico = null;
+
+
+			},
+			selectorChanged: function(){
+				if(this.selector){
+
+				}
+
+			},
+
+			power: function(){
+				if (this.pico === 0){
+						console.log("error connexion");
+				}
+				else{
+					d1(this.selector).power();
+				}
+			},
+
+
+			zoom: function(){
+				d1(this.selector).zoom();
+			},
+
+			back: function(){
+				d1(this.selector).back();
+
+			},
+
+
+			up: function(){
+				d1(this.selector).up();
+			},
+
+			left: function(){
+				d1(this.selector).left();
+			},
+
+			ok: function(){
+				d1(this.selector).ok();
+			},
+
+			right: function(){
+				d1(this.selector).right();
+			},
+
+			down: function(){
+				d1(this.selector).down();
+			},
+
+			lumiDown: function(){
+				d1(this.selector).lumiDown();
+			},
+
+			lumiUp: function(){
+				d1(this.selector).lumiUp();
+			},
+
+			prev: function(){
+				d1(this.selector).prev();
+			},
+
+			play: function(){
+				d1(this.selector).play();
+			},
+
+			next: function(){
+				d1(this.selector).next();
+			},
+
+			volumeDown: function(){
+				d1(this.selector).volumeDown();
+			},
+
+			mute: function(){
+				d1(this.selector).mute();
+			},
+
+			volumeUp: function(){
+				d1(this.selector).volumeUp();
+			}
+		});
+	</script>
+</polymer-element>
