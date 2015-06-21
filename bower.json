@@ -1,6 +1,6 @@
 {
-  "name": "bowertest",
-  "version": "0.0.0",
+  "name": "pico-remote",
+  "version": "0.8.0",
   "license": "LGPL v3.0",
   "ignore": [
     "**/.*",
