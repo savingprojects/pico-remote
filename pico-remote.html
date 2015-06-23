@@ -144,6 +144,9 @@
 				<div id="lumiDown">
 					<paper-button raised on-tap="{{lumiDown}}">lumi-</paper-button>
 				</div>
+				<div id="mute">
+					<paper-button toggle raised noink role="button" on-tap="{{mute}}">mute</paper-button>
+				</div>
 				<div id="lumiUp">
 					<paper-button raised on-tap="{{lumiUp}}">lumi+</paper-button>
 				</div>
@@ -159,8 +162,8 @@
 					<div id="volumeDown">
 						<paper-button raised on-tap="{{volumeDown}}">volume-</paper-button>
 					</div>
-					<div id="mute">
-						<paper-button toggle raised noink role="button" on-tap="{{mute}}">mute</paper-button>
+					<div id="display">
+						<paper-button toggle raised noink role="button" on-tap="{{display}}">display</paper-button>
 					</div>
 					<div id="volumeUp">
 						<paper-button raised on-tap="{{volumeUp}}">volume+</paper-button>
@@ -256,7 +259,12 @@
 
 			volumeUp: function(){
 				d1(this.selector).volumeUp();
+			},
+
+			display: function(){
+				d1(this.selector).display();
 			}
+
 		});
 	</script>
 </polymer-element>
