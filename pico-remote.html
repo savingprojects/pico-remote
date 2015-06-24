@@ -106,7 +106,7 @@
 
 		<div id="bloc1">
 			<div id="Power">
-				<paper-button toggle noink on-tap="{{power}}"><core-icon icon="settings-power" ></core-icon> </paper-button>
+				<paper-button on-tap="{{power}}"><core-icon icon="settings-power" ></core-icon> </paper-button>
 			</div>
 			<div id="Zoom">
 				<paper-button on-tap="{{zoom}}"> zoom</paper-button>
@@ -163,7 +163,7 @@
 						<paper-button  on-tap="{{volumeDown}}">volume-</paper-button>
 					</div>
 					<div id="display">
-						<paper-button toggle  noink role="button" on-tap="{{display}}">display</paper-button>
+						<paper-button role="button" on-tap="{{display}}">display</paper-button>
 					</div>
 					<div id="volumeUp">
 						<paper-button  on-tap="{{volumeUp}}">volume+</paper-button>
@@ -190,6 +190,7 @@
 			},
 
 			power: function(){
+				console.log(this.selector);
 				if (this.pico === 0){
 						console.log("error connexion");
 				}
