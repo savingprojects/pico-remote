@@ -163,7 +163,8 @@
 						<paper-button  on-tap="{{volumeDown}}">volume-</paper-button>
 					</div>
 					<div id="display">
-						<paper-button role="button" on-tap="{{display}}">display</paper-button>
+						<paper-button role="button" on-tap="{{displayOn}}">ON</paper-button>
+						<paper-button role="button" on-tap="{{displayOff}}">OFF</paper-button>
 					</div>
 					<div id="volumeUp">
 						<paper-button  on-tap="{{volumeUp}}">volume+</paper-button>
@@ -262,8 +263,17 @@
 				d1(this.selector).volumeUp();
 			},
 
-			display: function(){
+			displayOn: function(){
 				d1(this.selector).display();
+			},
+
+			displayOff: function(){
+				d1(this.selector).request({
+					service: 'pico',
+					func: 'DisplayOff'
+				}, function(peerId, err, data){
+
+				});
 			}
 
 		});
