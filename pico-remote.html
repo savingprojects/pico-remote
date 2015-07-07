@@ -102,6 +102,13 @@
 				align-items: center;
 				}
 
+			#stop{
+				display: flex;
+				flex-direction: raw;
+				justify-content: center;
+				/*padding-bottom: 0.5em;*/
+			}
+
 		</style>
 
 		<div id="bloc1">
@@ -263,7 +270,13 @@
 
 			display: function(){
 				d1(this.selector).display();
-			}
+			},
+
+			// stop: function(){	//stop video
+			// 	var that = this;
+			// 	d1(this.selector).openImageDemo();
+			// },
+
 
 		});
 	</script>
